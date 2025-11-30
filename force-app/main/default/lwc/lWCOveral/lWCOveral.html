@@ -1,0 +1,33 @@
+<template>
+    <lightning-card title="Account Form">
+    
+    <div class="slds-p-around_large">
+        <lightning-input  class="slds-p-top_medium slds-p-bottom_large" label="Account Name" onchange={handleNameChange}></lightning-input>
+
+        <lightning-record-picker
+            class="slds-p-top_medium slds-p-bottom_large"
+            label="Accounts Owner"
+            placeholder="Search Accounts..."
+            object-api-name="User"
+             data-id="ownerPicker"
+            onchange={handleOwnerChange}
+        >
+        </lightning-record-picker>
+      
+         <lightning-input class="slds-p-top_medium slds-p-bottom_large" data-id="matchBillingCheckbox" type="checkbox" label="Match Billing Address" name="input1" onchange={handleMBAChange}></lightning-input>
+        <lightning-combobox
+            class="slds-p-top_medium slds-p-bottom_large"
+            name="accountType"
+            label="Select Account Type"
+            value={selectedType}
+            placeholder="Select Account Type"
+            options={typeOptions}
+            onchange={handleTypeChange}>
+        </lightning-combobox>
+        <lightning-input class="slds-p-top_medium slds-p-bottom_large" type="date" name="input1" label="Support Plan Expiration Date" onchange={handleDateChange} ></lightning-input>
+
+          <lightning-button  variant="brand" label="Account" title=" action" onclick={handleSave} class="slds-m-left_x-small slds-p-top_large slds-p-bottom_large"></lightning-button>
+       
+    </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,108 @@
+<template>
+    <lightning-card >
+        <div class="slds-p-around_medium">
+
+         <!--   <img src={profileImage} alt="Fatema" style="border-radius:50%; width:150px;" />-->
+
+
+
+            <!-- Name 
+            <div class="section-box">
+                <h2 class="bold-heading">Fatema Tus Sumaiya</h2>
+                <p>Junior Developer</p>
+                <p>Email: fatema@inovisolutions.com</p>
+            </div>
+        -->
+            
+            <!-- Objective -->
+            <div class="section-box">
+                <h1 class="section-title">Objective</h1>
+                <p>Seeking a dynamic and challenging role in the field of
+                    web development or Mobile App development where I
+                    can apply my technical skills, creativity, and continuous
+                    learning to contribute to innovative projects and support
+                    organizational growth.</p>
+            </div>
+
+            <!-- Education -->
+            <div class="section-box">
+                <h1 class="section-title">Education</h1>
+                <h4>BSc in Computer Science and Engineering,</h4>
+                <p>Ahsanullah University of Science & Technology</p>
+                <p>2020 – 2024</p>
+                <p>CGPA: 3.5</p><br>
+                <h4>Higher Secondary School Certificate,</h4>
+                <p>Viqarunnisa Noon School & College, Dhaka</p>
+                <p>2019</p>
+                <p>GPA: 5</p>
+            </div>
+
+            <!-- Skills -->
+            <div class="section-box">
+                <h1 class="section-title">Skills</h1>
+                <h4>Languages</h4>
+                <p>C/C++, Python, Java, JavaScript</p>
+                <h4>Framework</h4>
+                <p>Laravel</p>
+                <h4>Database</h4>
+                <p>MySQL</p>
+                <h4>Tools</h4>
+                <p>Git, Android Studio, Visual Studio Code, Microsoft Office</p>
+            </div>
+
+            <!-- Contacts -->
+            <div class="section-box">
+                <h1 class="section-title">Contacts</h1>
+                <p>Phone: 01553388665</p>
+                <p>Email: fatematussumaiya16@gmail.com</p>
+            </div>
+        </div>
+
+        <!-- Feedback -->
+
+        
+        <div class="slds-m-around_medium">
+            
+           <!-- <lightning-input type="number" label="Rate this CV (1-5)" value={rating} onchange={handleRating}></lightning-input>
+            <lightning-combobox
+                    name="rating"
+                    label="Rate this CV"
+                    value={rating}
+                    options={ratingOptions}
+                    onchange={handleRating}>
+                </lightning-combobox> -->
+                
+
+                <!-- Rating with stars -->
+<div class="slds-m-bottom_small">
+    <label class="slds-form-element__label" for="star-rating">Rate this CV</label>
+    <div class="star-rating">
+    <template for:each={stars} for:item="star">
+        <span
+            key={star.value}
+            class="star-icon"
+            data-value={star.value}
+            onclick={handleStarClick}
+        >
+            <template if:true={star.filled}>
+                ★
+            </template>
+            <template if:false={star.filled}>
+                ☆
+            </template>
+        </span>
+    </template>
+</div>
+
+</div>
+
+            <lightning-textarea label="Leave a comment" value={comment} onchange={handleComment}></lightning-textarea>
+            <lightning-button label="Submit" onclick={submitFeedback} class="slds-m-top_small"></lightning-button>
+        </div>
+
+
+        <template if:true={success}>
+            <p class="slds-text-color_success slds-m-top_small">Thank you for your feedback!</p>
+        </template>
+    </lightning-card>
+</template>

@@ -1,0 +1,76 @@
+<template>
+    <lightning-tabset>
+        <lightning-tab label="Team Search">
+            <lightning-card title="Search and View Team Record">
+                <div class="slds-p-around_medium">
+    <lightning-input
+        label="Search by Player Name"
+        type="text"
+        value={searchKey}
+        onchange={handleNameChange}>
+    </lightning-input>
+
+    <lightning-button
+        label="Search"
+        variant="brand"
+        class="slds-m-left_small"
+        onclick={handleSearch}>
+    </lightning-button>
+</div>
+
+
+                <!-- Table -->
+                <template if:true={teams}>
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Player Name</th>
+                                <th scope="col">Country</th>
+                                <th scope="col">Position</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Salary</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={teams} for:item="team">
+                                <tr key={team.Id}>
+                                    <td>
+                                        <a href="javascript:void(0);" data-id={team.Id} onclick={handleNameClick}>
+                                            {team.Player_Name__c}
+                                        </a>
+                                    </td>
+                                    <td>{team.Country_Name__c}</td>
+                                    <td>{team.Position__c}</td>
+                                    <td>{team.Category__c}</td>
+                                    <td>{team.Individual_Salary__c}</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </template>
+            </lightning-card>
+        </lightning-tab>
+    </lightning-tabset>
+
+    <!-- Modal -->
+    <template if:true={showModal}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 class="slds-modal__title">Team Details</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <p><strong>Player:</strong> {selectedRecord.Player_Name__c}</p>
+                    <p><strong>Country:</strong> {selectedRecord.Country_Name__c}</p>
+                    <p><strong>Position:</strong> {selectedRecord.Position__c}</p>
+                    <p><strong>Category:</strong> {selectedRecord.Category__c}</p>
+                    <p><strong>Salary:</strong> {selectedRecord.Individual_Salary__c}</p>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning-button variant="neutral" label="Close" onclick={closeModal}></lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

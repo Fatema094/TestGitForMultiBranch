@@ -1,0 +1,15 @@
+<aura:component controller="AccountAura" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	
+    
+     <aura:attribute name="accounts" type="List"/>
+     <aura:attribute name="columns" type="List"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+     <lightning:card title="Accounts Table">
+        <lightning:datatable
+            keyField="Id"
+            data="{!v.accounts}"
+             columns="{!v.columns}"
+        />
+    </lightning:card>
+</aura:component>

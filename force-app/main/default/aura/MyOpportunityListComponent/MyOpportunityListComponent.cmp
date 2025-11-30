@@ -1,0 +1,13 @@
+<aura:component controller="OpportunityAura" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	
+    
+    <aura:attribute name="listOpportunity" type="Opportunity[]"/>
+    <aura:attribute name="columnsToDisplay" type="List"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <lightning:datatable
+            keyField="Id"
+            data="{!v.listOpportunity}"
+             columns="{!v.columnsToDisplay}"
+        />
+</aura:component>

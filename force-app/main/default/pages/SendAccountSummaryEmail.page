@@ -1,0 +1,4 @@
+<apex:page standardController="Account" extensions="AccountEmailSenderController">
+    <apex:pageMessages />
+    <h1>Email status: check messages above.</h1>
+</apex:page>

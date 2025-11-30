@@ -1,0 +1,103 @@
+<template>
+    <lightning-card title="Account Table">
+        <div class="slds-p-around_medium">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Owner</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={accounts} for:item="account">
+                        <tr key={account.id}>
+                            <td>{account.name}</td>
+                            <td>{account.phone}</td>
+                            <td>{account.owner}</td>
+                            <td>
+                                <template if:true={account.plusButton}>
+                                    
+                                    <lightning-button
+                                        label="Neutral"
+                                        title="Add"
+                                        onclick={handleAdd}
+                                    >
+                                    </lightning-button>
+                                </template>   
+                                
+                                <template if:true={account.removeButton}>
+                                    <lightning-button
+                                        variant="destructive"
+                                        label="Remove"
+                                        title="Remove"
+                                        onclick={handleRemove}
+                                        data-id={account.id}>
+                                    </lightning-button>
+                                </template>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+            <lightning-button class="slds-m-top_medium" label="Add" onclick={handleAdd}></lightning-button>
+
+
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Type</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <template for:each={newAccounts} for:item="acc">
+                        <tr key={acc.index}>
+                            <td>
+                                <lightning-input type="text" variant="label-hidden" data-abid={acc.index} onchange={handleAccountName}></lightning-input>
+                            </td>
+                            <td>
+                                <lightning-input type="tel" variant="label-hidden" label="Read-only phone field"></lightning-input>
+                            </td>
+                            <td>
+                                <lightning-combobox
+                                        name="type"
+                                        label="Status"
+                                        variant="label-hidden"
+                                        value={value}
+                                        placeholder="Select Type"
+                                        options={options}
+                                        onchange={handleChange}>
+                                </lightning-combobox>
+                            </td>
+                            <td>
+                                <template if:true={acc.plusButton}>
+                                    <lightning-button
+                                        label="Add"
+                                        title="Add"
+                                        onclick={handleAddNew}
+                                    >
+                                    </lightning-button>
+                                </template>   
+                                
+                                <template if:true={acc.removeButtom}>
+                                    <lightning-button
+                                        variant="destructive"
+                                        label="Remove"
+                                        title="Remove"
+                                        onclick={handleRemoveNew}
+                                        data-id={acc.index}>
+                                    </lightning-button>
+                                </template>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>    
+            </table>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,43 @@
+<template>
+    <lightning-card title="Opportunity Line Items">
+        <template if:true={lineItems}>
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-m-around_medium">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Unit Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Total Price</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={lineItems} for:item="item">
+                        <tr key={item.Id}>
+                            <td>{item.Name}</td>
+                            <td>{item.UnitPrice}</td>
+                            <td>{item.Quantity}</td>
+                            <td>{item.TotalPrice}</td>
+                            <td>
+                                <lightning-button variant="brand" 
+                                                  label="Edit" 
+                                                  data-id={item.Id} 
+                                                  onclick={handleEdit}>
+                                </lightning-button>
+                                &nbsp;
+                                <lightning-button variant="destructive" 
+                                                  label="Delete" 
+                                                  data-id={item.Id} 
+                                                  onclick={handleDelete}>
+                                </lightning-button>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </template>
+        <template if:false={lineItems}>
+            <p class="slds-p-around_medium">No Line Items found</p>
+        </template>
+    </lightning-card>
+</template>

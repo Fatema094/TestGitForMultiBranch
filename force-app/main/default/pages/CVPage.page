@@ -1,0 +1,128 @@
+<apex:page lightningStylesheets="true" >
+   <!-- <apex:includeScript value="https://www.lightningdesignsystem.com/assets/styles/salesforce-lightning-design-system.min.css"/>-->
+
+        <apex:slds />
+    <apex:includeLightning />
+   
+    <div style="text-align:center;">
+    
+</div>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .cv-container {
+            border: 2px solid #d8dde6;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            max-width: 800px;
+            margin: auto;
+        }
+        
+        
+        h1, h2, h4 {
+            font-weight: bold;
+        color: #1b5299;
+         
+        }
+        
+        .section-title {
+            font-weight: bold;
+            font-size: 3 rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #d8dde6;
+            padding-bottom: 15px;
+        }
+
+        .section-box {
+            border: 1px solid #d8dde6;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        
+         .section-spacing {
+            margin-top: 20px;
+        }
+        
+       .bold-heading {
+            font-weight: bold;
+            font-size: 4.5rem;
+            margin-bottom: 10px;
+            color: #1b5299;
+        }
+
+        .cv-header {
+            background: #1b5299;
+            color: white;
+            padding: 20px 30px;
+            font-size: 1.5em;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        #CV {
+            padding: 60px;
+        }
+        
+        
+        
+        .star-rating {
+            display: flex;
+            gap: 5px;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .star-icon {
+            color: #f5b301; /* gold */
+            user-select: none;
+        }
+
+
+        @media screen and (max-width: 768px) {
+            .cv-container {
+                margin: 10px;
+                padding: 20px;
+            }
+
+            .cv-header {
+                font-size: 1.2em;
+                padding: 15px;
+            }
+        }
+        
+    </style>
+    
+    <div class="cv-container">
+        <div class="cv-header">
+ 
+            <apex:image url="{!URLFOR($Resource.myProfilePic)}" style="border-radius: 50%; border: 2px solid #ccc;" width="150" height="150"/>
+            <p>Fatema Tus Sumaiya</p>
+                <p>Junior Developer</p>
+                <p>Email: fatema@inovisolutions.com</p>
+        </div>
+        <div id="CV"></div>
+    </div>
+    
+    <script>
+    
+    $Lightning.use("c:cvApp", function(){
+    		$Lightning.createComponent("c:cvViewer",
+                                      {},
+                                       "CV",
+                                       function(){}
+                                      );
+    });
+    </script>
+</apex:page>

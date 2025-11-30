@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="Simple Quiz App">
+        <template if:false={quizFinished}>
+            <c-child-component
+                question={currentQuestion}
+                onanswerselected={handleAnswerSelected}>
+            </c-child-component>
+
+            <!-- ✅ Feedback message after each question -->
+            <template if:true={feedbackMessage}>
+                <p style="font-weight: bold; margin-top: 10px;">{feedbackMessage}</p>
+            </template>
+        </template>
+
+        <template if:true={quizFinished}>
+            <p>Your score: {score} / {questions.length}</p>
+            <lightning-button label="Restart" onclick={handleRestart}></lightning-button>
+        </template>
+    </lightning-card>
+</template>

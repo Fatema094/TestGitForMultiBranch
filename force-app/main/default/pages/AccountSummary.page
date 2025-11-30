@@ -1,0 +1,26 @@
+<apex:page standardController="Account" extensions="AccountSummaryController">
+     <h1>Account Summary</h1>
+
+    <h2>Account Details</h2>
+    <p><strong>Name:</strong> {!Account.Name}</p>
+    <p><strong>Industry:</strong> {!Account.Industry}</p>
+    <p><strong>Type:</strong> {!Account.Type}</p>
+
+    <h2>Related Opportunities</h2>
+    <apex:repeat value="{!opportunities}" var="opp">
+        <p>
+            <strong>{!opp.Name}</strong><br/>
+            Stage: {!opp.StageName}<br/>
+            Amount: {!opp.Amount}<br/>
+            Close Date: {!opp.CloseDate}<br/>
+        </p>
+        <hr/>
+    </apex:repeat>
+    
+    <apex:form >
+    <apex:commandButton value="Send as PDF Email" action="{!sendEmail}" />
+    </apex:form>
+
+    
+    
+</apex:page>

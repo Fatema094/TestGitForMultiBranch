@@ -1,0 +1,13 @@
+<template>
+    <div>
+        <p><strong>{question.question}</strong></p>
+        <template for:each={question.options} for:item="option">
+            <lightning-button
+                key={option}
+                label={option}
+                onclick={handleOptionClick}
+                class="slds-m-around_x-small">
+            </lightning-button>
+        </template>
+    </div>
+</template>
